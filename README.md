@@ -13,7 +13,7 @@ GET /reply/kbzw9ru
 ```
 
 As the service is widely adopted, there have been increasing feature requests.
-Our project manager has come back with the following requirement:
+Our project manager has come back with the following requirements for V2 of the service:
 
 The input string will now be comprised of two components, a rule and a string, separated by a dash (-).
 Rules **always** contain two numbers. Each number represents a string operation.
@@ -52,20 +52,26 @@ GET /v2/reply/22-kbzw9ru
     "data": "e8501e64cf0a9fa45e3c25aa9e77ffd5"
 }
 ```
-**Note:** Additional new rules are expected to be introduced in the future releases.
-Please make sure all of your change work 
 
 ## What you need to do
 Use the boilerplate given and implement the above requirement.
 Your implementation should also consider:
 
-- Additional rules are expected in the future releases. The change in rule set
-should have minimal code change and impact to existing functionality.
-- Testability for individual rules and the application.
+- Maintain the existing endpoint for backward compatibility.
+- Implement V2 endpoint for the above new requirements.
+- Additional rules are expected in future releases. The updates in rule set
+should have minimal code changes and impact to existing functionality.
+- Testability for individual rule and the application.
 Unit tests are highly recommended.
-- Endpoint should return correct status code and response message. 
-E.g. For invalid request, such as `GET /v2/reply/13-kbzw9ru`, it should return
-status code `400` with message `"Invalid input"`.
+- Endpoints should return correct status code and response message.
+For invalid request, it should return status code `400`
+with message `"Invalid input"`, for example:
+   ```
+   GET /v2/reply/13-kbzw9ru
+   {
+       "message": "Invalid input"
+   }
+   ```
 
 Upon completing the task, please feel free to (though not required):
 
