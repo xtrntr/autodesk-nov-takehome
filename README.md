@@ -102,3 +102,13 @@ GET localhost:8080/reply/helloworld
     message: "helloword"
 }
 ```
+
+## Run tests
+
+```json
+./gradlew test
+```
+
+## Candidate comments
+
+TODO: some tests in `ReplyControllerTest` could be refactored out into unit tests for `RuleService`  alone.
