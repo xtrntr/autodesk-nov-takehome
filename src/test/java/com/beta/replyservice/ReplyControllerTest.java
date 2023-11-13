@@ -66,7 +66,7 @@ public class ReplyControllerTest {
         mockMvc.perform(get(String.format("/v2/reply/%s", invalidFormat))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string("Invalid format"));
+                .andExpect(content().string("Invalid format. Expected {rule}-{string}."));
     }
 
     private static Stream<Arguments> invalidFormat() {
@@ -82,7 +82,7 @@ public class ReplyControllerTest {
         mockMvc.perform(get(String.format("/v2/reply/%s", invalidRule))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string(String.format("Invalid rule: %s", invalidRule.split("-", 2)[0])));
+                .andExpect(content().string(String.format("Invalid rule: %s. Only 1 and 2 are valid inputs for a rule.", invalidRule.split("-", 2)[0])));
     }
 
     private static Stream<Arguments> invalidRules() {

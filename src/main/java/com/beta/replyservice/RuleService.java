@@ -12,7 +12,7 @@ public class RuleService {
     public String applyRule(String rulestring) {
         String[] res = rulestring.split("-", 2);
         if (res.length < 2 || res[0].isEmpty()) {
-            throw new IllegalArgumentException("Invalid format");
+            throw new IllegalArgumentException("Invalid format. Expected {rule}-{string}.");
         }
         String rule = res[0];
         String result = res[1];
@@ -25,7 +25,7 @@ public class RuleService {
                     result = md5(result);
                     break;
                 default:
-                    throw new IllegalArgumentException(String.format("Invalid rule: %s", rule));
+                    throw new IllegalArgumentException(String.format("Invalid rule: %s. Only 1 and 2 are valid inputs for a rule.", rule));
             }
         }
         return result;
